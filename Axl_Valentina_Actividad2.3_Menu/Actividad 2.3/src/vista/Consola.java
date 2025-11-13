@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 
 
-
+// botones en consola
 public class Consola extends JFrame {    
     private JButton btnAgregarProducto;  
     private JButton btnAgregarStock;  
@@ -14,7 +14,7 @@ public class Consola extends JFrame {
     private JButton btnReporteInventario; 
     private JButton btnSalir;
 
-    
+    // inicializa la ventana 
     public Consola() {
         inicializarComponentes(); 
         configurarVentana();      
@@ -45,17 +45,17 @@ public class Consola extends JFrame {
         panelBotones.add(btnReporteInventario);
         panelBotones.add(btnSalir);
 
-        
+        // setea el layout para organizar el panel
         setLayout(new BorderLayout());
         add(panelBotones, BorderLayout.CENTER); 
 
-       
+        // crea y configura el titulo de la ventana
         JLabel titulo = new JLabel("SISTEMA DE GESTIÓN DE INVENTARIO", JLabel.CENTER);
         titulo.setFont(new Font("Elizeth", Font.BOLD, 15));
         titulo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(titulo, BorderLayout.NORTH); 
     }
-
+    // define titulo, tamaño, cierre, posición y si es redimensionable
     private void configurarVentana() {
         setTitle("Sistema de Gestión de Inventario"); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -63,7 +63,8 @@ public class Consola extends JFrame {
         setLocationRelativeTo(null); 
         setResizable(false); 
     }
-
+    
+    // métodos para asociar a los botones
     public void setAgregarProductoListener(ActionListener listener) {
         btnAgregarProducto.addActionListener(listener);
     }
@@ -83,7 +84,7 @@ public class Consola extends JFrame {
     public void setSalirListener(ActionListener listener) {
         btnSalir.addActionListener(listener);
     }
-    
+    // métodos para mostrar diálogos en consola al usuario
     public String mostrarInputDialog(String mensaje) {
         return JOptionPane.showInputDialog(this, mensaje);
     }
@@ -100,4 +101,5 @@ public class Consola extends JFrame {
     public void mostrarMensajeDialog(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
+
 }
