@@ -51,7 +51,7 @@ public class ControladorInventario {
                     System.out.println(" Nuevo producto '" + nombre + "' agregado con stock: " + stock);
                 }
             } else {
-                System.out.println(" Error: El stock no puede ser negativo");
+                System.out.println(" Error: El stock no puede ser negativo o una letra");
             }
         } else {
             System.out.println(" Error: Debe ingresar el nombre del producto");
@@ -108,3 +108,4 @@ public class ControladorInventario {
     }
 
 }
+
