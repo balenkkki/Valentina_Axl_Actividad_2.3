@@ -5,12 +5,12 @@ import modelo.Producto;
 import vista.Consola;
 
 
-
+// controlador principal que conecta la bodega y el sistema
 public class ControladorInventario {
     private final Bodega bodega;
     private final Consola vista; 
 
-
+    // recibe modelo y vista, configurando la interfaz
     public ControladorInventario(Bodega bodega, Consola vista) {
         this.bodega = bodega;
         this.vista = vista;
@@ -18,6 +18,7 @@ public class ControladorInventario {
         System.out.println("GESTIÓN DE INVENTARIO");
     }
 
+    // asocia los botones con el método del controlador
     private void configurarListeners() {
         vista.setAgregarProductoListener(e -> agregarProducto());
         vista.setAgregarStockListener(e -> agregarStock());
@@ -28,7 +29,7 @@ public class ControladorInventario {
             System.exit(0);
         });
     }
-    
+    // agregar un producto o suma stock si ya existe
     private void agregarProducto() {
         System.out.println("AGREGAR PRODUCTO ");
         String nombre = vista.mostrarInputDialog("Ingrese el producto:");
@@ -45,7 +46,7 @@ public class ControladorInventario {
                     System.out.println(" Stock agregado: " + stock);
                     System.out.println(" Stock nuevo: " + stockNuevo);
                 } else {
-                    // Si no existe, crea un nuevo producto y lo agrega a la bodega
+                    // si no existe, crea un nuevo producto y lo agrega a la bodega
                     bodega.agregarProducto(nombre, stock);
                     System.out.println(" Nuevo producto '" + nombre + "' agregado con stock: " + stock);
                 }
@@ -56,7 +57,7 @@ public class ControladorInventario {
             System.out.println(" Error: Debe ingresar el nombre del producto");
         }
     }
-
+    // agrega stock o lo actualiza si ya existe
     private void agregarStock() {
         System.out.println(" AGREGAR STOCK ");
         String nombre = vista.mostrarInputDialog("Ingresar el nombre del producto:");
@@ -78,7 +79,7 @@ public class ControladorInventario {
             }
         }
     }
-    
+    // resta stock de un producto, validando su cantidad
     private void restarStock() {
         System.out.println("RESTAR STOCK");
         String nombre = vista.mostrarInputDialog("Ingrese el nombre del producto:");
@@ -93,6 +94,7 @@ public class ControladorInventario {
                         System.out.println(" Stock actual: " + producto.getStock());
                     }
                 } else {
+                    // si el producto no existe o no hay suficiente stock, muestra un mensaje con el error
                     System.out.println(" Error: No se pudo restar stock.");
                 }
             } else {
@@ -100,7 +102,9 @@ public class ControladorInventario {
             }
         }
     }
+    // muestra en consola el reporte de inventario
     private void generarReporteInventario() {
         System.out.println("\n" + bodega.generarReporteInventario());
     }
+
 }
