@@ -15,7 +15,6 @@ public class bodegatest {
     
     @Test  
     public void pruebaAgregarStock() {  
-        // Prueba: 7 + 5 = 12
         bodega.agregarProducto("Producto Test", 7);  
         boolean resultado = bodega.agregarStock("Producto Test", 5);  
         assertTrue("Debería agregar stock exitosamente", resultado);  
