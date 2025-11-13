@@ -83,23 +83,6 @@ public class Bodega {
         return reporte.toString();
     }
 
-    /**
-     * Genera un reporte de productos con stock menor al mínimo usando for-each.
-     * @param stockMinimo Límite inferior de stock
-     * @return String con los productos críticos
-     */
-    public String generarReporteStockCritico(int stockMinimo) {
-        StringBuilder reporte = new StringBuilder();
-        reporte.append("REPORTE DE STOCK CRITICO (Stock < " + stockMinimo + ")");
-
-        for (Producto producto : inventario) {
-            if (producto.getStock() < stockMinimo) {
-                reporte.append(producto.toString()).append("\n");
-            }
-        }
-
-        return reporte.toString();
-    }
 
     /**
      * Busca un producto por nombre (ignora mayúsculas/minúsculas).
@@ -114,4 +97,5 @@ public class Bodega {
         }
         return null;
     }
+
 }
